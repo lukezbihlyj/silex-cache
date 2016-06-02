@@ -1,0 +1,18 @@
+{
+    "name": "lukezbihlyj/silex-cache",
+    "description": "Simple and flexible caching mechanism to be used with the silex-plus package.",
+    "type": "library",
+    "require": {
+        "php": ">=5.4",
+
+        "silex/silex": "~1.3",
+        "lukezbihlyj/silex-plus": "dev-master",
+
+        "colinmollenhour/credis": "~1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "LukeZbihlyj\\SilexCache\\": "module/SilexCache/src/"
+        }
+    }
+}
