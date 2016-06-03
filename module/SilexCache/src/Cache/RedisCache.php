@@ -2,6 +2,11 @@
 
 namespace LukeZbihlyj\SilexCache\Cache;
 
+use InvalidArgumentException;
+use LukeZbihlyj\SilexPlus\Application;
+use Credis_Client;
+use Credis_Cluster;
+
 /**
  * @package LukeZbihlyj\SilexCache\Cache\RedisCache
  */
@@ -55,7 +60,7 @@ class RedisCache implements CacheInterface
     {
         $key = self::KEY_PREFIX . $key;
 
-        return $this->driver->get($key);
+        return unserialize($this->driver->get($key));
     }
 
     /**
