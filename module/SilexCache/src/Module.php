@@ -4,6 +4,7 @@ namespace LukeZbihlyj\SilexCache;
 
 use LukeZbihlyj\SilexPlus\Application;
 use LukeZbihlyj\SilexPlus\ModuleInterface;
+use LukeZbihlyj\SilexCache\Cache;
 
 /**
  * @package LukeZbihlyj\SilexCache\Module
@@ -26,10 +27,10 @@ class Module implements ModuleInterface
         $app['cache'] = $app->share(function() use ($app) {
             switch ($app['cache.driver']) {
                 case 'redis':
-                    return new RedisCache($app);
+                    return new Cache\RedisCache($app);
                     break;
                 default:
-                    return new ArrayCache($app);
+                    return new Cache\ArrayCache($app);
                     break;
             }
         });
