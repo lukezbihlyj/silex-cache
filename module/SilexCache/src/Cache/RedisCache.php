@@ -35,10 +35,10 @@ class RedisCache implements CacheInterface
     {
         $this->app = $app;
 
-        if (is_array($this->app['session.redis'])) {
-            $this->driver = new Credis_Cluster($this->app['session.redis']);
+        if (is_array($this->app['cache.redis'])) {
+            $this->driver = new Credis_Cluster($this->app['cache.redis']);
         } else {
-            list($host, $port, $dsnDatabase, $user, $password, $options) = $this->parseDsn($this->app['session.redis']);
+            list($host, $port, $dsnDatabase, $user, $password, $options) = $this->parseDsn($this->app['cache.redis']);
 
             $timeout = isset($options['timeout']) ? intval($options['timeout']) : null;
             $persistent = isset($options['persistent']) ? $options['persistent'] : '';
