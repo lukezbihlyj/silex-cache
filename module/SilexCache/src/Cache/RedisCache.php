@@ -70,10 +70,10 @@ class RedisCache implements CacheInterface
     {
         $key = self::KEY_PREFIX . $key;
 
-        $this->driver->set($key, serialize($value));
-
         if ($ttl) {
-            $this->driver->expire($key, $ttl);
+            $this->driver->setex($key, serialize($value), $ttl);
+        } else {
+            $this->driver->set($key, serialize($value));
         }
     }
 
