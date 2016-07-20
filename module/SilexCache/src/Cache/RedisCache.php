@@ -71,7 +71,7 @@ class RedisCache implements CacheInterface
         $key = self::KEY_PREFIX . $key;
 
         if ($ttl) {
-            $this->driver->setex($key, serialize($value), $ttl);
+            $this->driver->setex($key, $ttl, serialize($value));
         } else {
             $this->driver->set($key, serialize($value));
         }
