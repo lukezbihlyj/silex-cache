@@ -54,6 +54,14 @@ class RedisCache implements CacheInterface
     }
 
     /**
+     * @return Credis_Client
+     */
+    public function getDriver()
+    {
+        return $this->driver;
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function get($key)
